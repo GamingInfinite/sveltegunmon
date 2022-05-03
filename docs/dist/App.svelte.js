@@ -119,7 +119,7 @@ function create_fragment(ctx) {
 			create_component(navbutton1.$$.fragment);
 			t1 = space();
 			div1 = element("div");
-			div1.textContent = "1.0.0";
+			div1.textContent = "1.0.1";
 			t3 = space();
 			create_component(modal0.$$.fragment);
 			t4 = space();
