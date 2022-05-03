@@ -15,9 +15,14 @@
       nav_title="Bag"
       modal_id="bag"
     />
+    <NavButton 
+      icon_link="https://www.shareicon.net/download/2016/08/06/807599_cards_512x512.png" 
+      nav_title="Trainer Card" 
+      modal_id="trcard" 
+    />
   </div>
   <div id="version">
-    1.0.1
+    1.0.2
   </div>
   <Modal modal_title="Party" id="party">
       <div>
@@ -29,6 +34,7 @@
           Idk how this is gonna be formatted
       </div>
   </Modal>
+  <canvas id="overworld">
 </body>
 
 <svelte:head>
@@ -64,5 +70,14 @@
     color: black;
     background-color: white;
     font-family: "Radio Canada", sans-serif;
+  }
+
+  #overworld {
+    width: 95vh;
+    height: 100vh;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: maroon;
   }
 </style>
