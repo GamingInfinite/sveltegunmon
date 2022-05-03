@@ -129,9 +129,9 @@ function create_fragment(ctx) {
 			link1 = element("link");
 			link2 = element("link");
 			attr(div0, "id", "navbar");
-			attr(div0, "class", "svelte-srhudo");
+			attr(div0, "class", "svelte-1flu7ft");
 			attr(div1, "id", "version");
-			attr(div1, "class", "svelte-srhudo");
+			attr(div1, "class", "svelte-1flu7ft");
 			attr(link0, "rel", "preconnect");
 			attr(link0, "href", "https://fonts.googleapis.com");
 			attr(link1, "rel", "preconnect");
