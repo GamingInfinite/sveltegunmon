@@ -46,11 +46,11 @@ function create_fragment(ctx) {
 			t2 = text(/*modal_title*/ ctx[0]);
 			t3 = space();
 			if (default_slot) default_slot.c();
-			attr(span, "class", "close svelte-1li61zx");
-			attr(header, "class", "svelte-1li61zx");
-			attr(div0, "class", "modal-content svelte-1li61zx");
+			attr(span, "class", "close svelte-1sl7p5v");
+			attr(header, "class", "svelte-1sl7p5v");
+			attr(div0, "class", "modal-content svelte-1sl7p5v");
 			attr(div1, "id", /*id*/ ctx[1]);
-			attr(div1, "class", "modal svelte-1li61zx");
+			attr(div1, "class", "modal svelte-1sl7p5v");
 		},
 		m(target, anchor) {
 			insert(target, div1, anchor);

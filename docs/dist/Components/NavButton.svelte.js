@@ -77,8 +77,6 @@ function instance($$self, $$props, $$invalidate) {
 	function handleclick() {
 		var modal = document.getElementById(modal_id);
 		modal.style.display = "block";
-		modal.style.opacity = 0.1;
-		modal.style.opacity = 1;
 	}
 
 	$$self.$$set = $$props => {
