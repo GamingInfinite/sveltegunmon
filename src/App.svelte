@@ -73,7 +73,7 @@
   }
 
   #overworld {
-    width: 95vh;
+    width: 95vw;
     height: 100vh;
     position: absolute;
     right: 0;
