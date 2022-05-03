@@ -39,7 +39,7 @@ function create_default_slot_1(ctx) {
 	};
 }
 
-// (24:2) <Modal modal_title="Bag" id="bag">
+// (27:2) <Modal modal_title="Bag" id="bag">
 function create_default_slot(ctx) {
 	let div;
 
@@ -60,15 +60,17 @@ function create_default_slot(ctx) {
 
 function create_fragment(ctx) {
 	let body;
-	let div;
+	let div0;
 	let navbutton0;
 	let t0;
 	let navbutton1;
 	let t1;
-	let modal0;
-	let t2;
-	let modal1;
+	let div1;
 	let t3;
+	let modal0;
+	let t4;
+	let modal1;
+	let t5;
 	let link0;
 	let link1;
 	let link2;
@@ -111,20 +113,25 @@ function create_fragment(ctx) {
 	return {
 		c() {
 			body = element("body");
-			div = element("div");
+			div0 = element("div");
 			create_component(navbutton0.$$.fragment);
 			t0 = space();
 			create_component(navbutton1.$$.fragment);
 			t1 = space();
-			create_component(modal0.$$.fragment);
-			t2 = space();
-			create_component(modal1.$$.fragment);
+			div1 = element("div");
+			div1.textContent = "1.0.0";
 			t3 = space();
+			create_component(modal0.$$.fragment);
+			t4 = space();
+			create_component(modal1.$$.fragment);
+			t5 = space();
 			link0 = element("link");
 			link1 = element("link");
 			link2 = element("link");
-			attr(div, "id", "navbar");
-			attr(div, "class", "svelte-kzb6gt");
+			attr(div0, "id", "navbar");
+			attr(div0, "class", "svelte-srhudo");
+			attr(div1, "id", "version");
+			attr(div1, "class", "svelte-srhudo");
 			attr(link0, "rel", "preconnect");
 			attr(link0, "href", "https://fonts.googleapis.com");
 			attr(link1, "rel", "preconnect");
@@ -135,15 +142,17 @@ function create_fragment(ctx) {
 		},
 		m(target, anchor) {
 			insert(target, body, anchor);
-			append(body, div);
-			mount_component(navbutton0, div, null);
-			append(div, t0);
-			mount_component(navbutton1, div, null);
+			append(body, div0);
+			mount_component(navbutton0, div0, null);
+			append(div0, t0);
+			mount_component(navbutton1, div0, null);
 			append(body, t1);
+			append(body, div1);
+			append(body, t3);
 			mount_component(modal0, body, null);
-			append(body, t2);
+			append(body, t4);
 			mount_component(modal1, body, null);
-			insert(target, t3, anchor);
+			insert(target, t5, anchor);
 			append(document.head, link0);
 			append(document.head, link1);
 			append(document.head, link2);
@@ -186,7 +195,7 @@ function create_fragment(ctx) {
 			destroy_component(navbutton1);
 			destroy_component(modal0);
 			destroy_component(modal1);
-			if (detaching) detach(t3);
+			if (detaching) detach(t5);
 			detach(link0);
 			detach(link1);
 			detach(link2);
