@@ -17,7 +17,7 @@
     />
   </div>
   <div id="version">
-    1.0.0
+    1.0.1
   </div>
   <Modal modal_title="Party" id="party">
       <div>
