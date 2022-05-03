@@ -21,7 +21,7 @@ import {
 import NavButton from "./Components/NavButton.svelte.js";
 import Modal from "./Components/Modal.svelte.js";
 
-function create_default_slot_1(ctx) {
+function create_default_slot_4(ctx) {
 	let div;
 
 	return {
@@ -39,14 +39,71 @@ function create_default_slot_1(ctx) {
 	};
 }
 
-// (32:2) <Modal modal_title="Bag" id="bag">
-function create_default_slot(ctx) {
+// (42:2) <Modal modal_title="Bag" id="bag">
+function create_default_slot_3(ctx) {
 	let div;
 
 	return {
 		c() {
 			div = element("div");
 			div.textContent = "Idk how this is gonna be formatted";
+		},
+		m(target, anchor) {
+			insert(target, div, anchor);
+		},
+		p: noop,
+		d(detaching) {
+			if (detaching) detach(div);
+		}
+	};
+}
+
+// (47:2) <Modal modal_title="Trainer Card" id="trcard">
+function create_default_slot_2(ctx) {
+	let div;
+
+	return {
+		c() {
+			div = element("div");
+			div.textContent = "Some sort of trainer card creator.";
+		},
+		m(target, anchor) {
+			insert(target, div, anchor);
+		},
+		p: noop,
+		d(detaching) {
+			if (detaching) detach(div);
+		}
+	};
+}
+
+// (52:2) <Modal modal_title="Settings" id="settings">
+function create_default_slot_1(ctx) {
+	let div;
+
+	return {
+		c() {
+			div = element("div");
+			div.textContent = "This will have UI customization, account stuff, and a bunch more later.";
+		},
+		m(target, anchor) {
+			insert(target, div, anchor);
+		},
+		p: noop,
+		d(detaching) {
+			if (detaching) detach(div);
+		}
+	};
+}
+
+// (57:2) <Modal modal_title="About" id="about">
+function create_default_slot(ctx) {
+	let div;
+
+	return {
+		c() {
+			div = element("div");
+			div.textContent = "This will have information about all the backend stuff like how it was made with Svelte and uses GUN.js for online functionality and uses pokeapi.co for getting information on all the existing pokemon and their regions.";
 		},
 		m(target, anchor) {
 			insert(target, div, anchor);
@@ -67,14 +124,24 @@ function create_fragment(ctx) {
 	let t1;
 	let navbutton2;
 	let t2;
-	let div1;
+	let navbutton3;
+	let t3;
+	let navbutton4;
 	let t4;
-	let modal0;
-	let t5;
-	let modal1;
+	let div1;
 	let t6;
-	let canvas;
+	let modal0;
 	let t7;
+	let modal1;
+	let t8;
+	let modal2;
+	let t9;
+	let modal3;
+	let t10;
+	let modal4;
+	let t11;
+	let canvas;
+	let t12;
 	let link0;
 	let link1;
 	let link2;
@@ -104,11 +171,27 @@ function create_fragment(ctx) {
 			}
 		});
 
+	navbutton3 = new NavButton({
+			props: {
+				icon_link: "https://www.shareicon.net/download/2015/10/04/111864_gear_512x512.png",
+				nav_title: "Settings",
+				modal_id: "settings"
+			}
+		});
+
+	navbutton4 = new NavButton({
+			props: {
+				icon_link: "https://cdn0.iconfinder.com/data/icons/google-material-design-3-0/48/ic_info_outline_48px-512.png",
+				nav_title: "About",
+				modal_id: "about"
+			}
+		});
+
 	modal0 = new Modal({
 			props: {
 				modal_title: "Party",
 				id: "party",
-				$$slots: { default: [create_default_slot_1] },
+				$$slots: { default: [create_default_slot_4] },
 				$$scope: { ctx }
 			}
 		});
@@ -117,6 +200,33 @@ function create_fragment(ctx) {
 			props: {
 				modal_title: "Bag",
 				id: "bag",
+				$$slots: { default: [create_default_slot_3] },
+				$$scope: { ctx }
+			}
+		});
+
+	modal2 = new Modal({
+			props: {
+				modal_title: "Trainer Card",
+				id: "trcard",
+				$$slots: { default: [create_default_slot_2] },
+				$$scope: { ctx }
+			}
+		});
+
+	modal3 = new Modal({
+			props: {
+				modal_title: "Settings",
+				id: "settings",
+				$$slots: { default: [create_default_slot_1] },
+				$$scope: { ctx }
+			}
+		});
+
+	modal4 = new Modal({
+			props: {
+				modal_title: "About",
+				id: "about",
 				$$slots: { default: [create_default_slot] },
 				$$scope: { ctx }
 			}
@@ -132,15 +242,25 @@ function create_fragment(ctx) {
 			t1 = space();
 			create_component(navbutton2.$$.fragment);
 			t2 = space();
-			div1 = element("div");
-			div1.textContent = "1.0.2";
+			create_component(navbutton3.$$.fragment);
+			t3 = space();
+			create_component(navbutton4.$$.fragment);
 			t4 = space();
-			create_component(modal0.$$.fragment);
-			t5 = space();
-			create_component(modal1.$$.fragment);
+			div1 = element("div");
+			div1.textContent = "1.0.3";
 			t6 = space();
-			canvas = element("canvas");
+			create_component(modal0.$$.fragment);
 			t7 = space();
+			create_component(modal1.$$.fragment);
+			t8 = space();
+			create_component(modal2.$$.fragment);
+			t9 = space();
+			create_component(modal3.$$.fragment);
+			t10 = space();
+			create_component(modal4.$$.fragment);
+			t11 = space();
+			canvas = element("canvas");
+			t12 = space();
 			link0 = element("link");
 			link1 = element("link");
 			link2 = element("link");
@@ -166,15 +286,25 @@ function create_fragment(ctx) {
 			mount_component(navbutton1, div0, null);
 			append(div0, t1);
 			mount_component(navbutton2, div0, null);
-			append(body, t2);
-			append(body, div1);
+			append(div0, t2);
+			mount_component(navbutton3, div0, null);
+			append(div0, t3);
+			mount_component(navbutton4, div0, null);
 			append(body, t4);
-			mount_component(modal0, body, null);
-			append(body, t5);
-			mount_component(modal1, body, null);
+			append(body, div1);
 			append(body, t6);
+			mount_component(modal0, body, null);
+			append(body, t7);
+			mount_component(modal1, body, null);
+			append(body, t8);
+			mount_component(modal2, body, null);
+			append(body, t9);
+			mount_component(modal3, body, null);
+			append(body, t10);
+			mount_component(modal4, body, null);
+			append(body, t11);
 			append(body, canvas);
-			insert(target, t7, anchor);
+			insert(target, t12, anchor);
 			append(document.head, link0);
 			append(document.head, link1);
 			append(document.head, link2);
@@ -195,22 +325,53 @@ function create_fragment(ctx) {
 			}
 
 			modal1.$set(modal1_changes);
+			const modal2_changes = {};
+
+			if (dirty & /*$$scope*/ 1) {
+				modal2_changes.$$scope = { dirty, ctx };
+			}
+
+			modal2.$set(modal2_changes);
+			const modal3_changes = {};
+
+			if (dirty & /*$$scope*/ 1) {
+				modal3_changes.$$scope = { dirty, ctx };
+			}
+
+			modal3.$set(modal3_changes);
+			const modal4_changes = {};
+
+			if (dirty & /*$$scope*/ 1) {
+				modal4_changes.$$scope = { dirty, ctx };
+			}
+
+			modal4.$set(modal4_changes);
 		},
 		i(local) {
 			if (current) return;
 			transition_in(navbutton0.$$.fragment, local);
 			transition_in(navbutton1.$$.fragment, local);
 			transition_in(navbutton2.$$.fragment, local);
+			transition_in(navbutton3.$$.fragment, local);
+			transition_in(navbutton4.$$.fragment, local);
 			transition_in(modal0.$$.fragment, local);
 			transition_in(modal1.$$.fragment, local);
+			transition_in(modal2.$$.fragment, local);
+			transition_in(modal3.$$.fragment, local);
+			transition_in(modal4.$$.fragment, local);
 			current = true;
 		},
 		o(local) {
 			transition_out(navbutton0.$$.fragment, local);
 			transition_out(navbutton1.$$.fragment, local);
 			transition_out(navbutton2.$$.fragment, local);
+			transition_out(navbutton3.$$.fragment, local);
+			transition_out(navbutton4.$$.fragment, local);
 			transition_out(modal0.$$.fragment, local);
 			transition_out(modal1.$$.fragment, local);
+			transition_out(modal2.$$.fragment, local);
+			transition_out(modal3.$$.fragment, local);
+			transition_out(modal4.$$.fragment, local);
 			current = false;
 		},
 		d(detaching) {
@@ -218,9 +379,14 @@ function create_fragment(ctx) {
 			destroy_component(navbutton0);
 			destroy_component(navbutton1);
 			destroy_component(navbutton2);
+			destroy_component(navbutton3);
+			destroy_component(navbutton4);
 			destroy_component(modal0);
 			destroy_component(modal1);
-			if (detaching) detach(t7);
+			destroy_component(modal2);
+			destroy_component(modal3);
+			destroy_component(modal4);
+			if (detaching) detach(t12);
 			detach(link0);
 			detach(link1);
 			detach(link2);
