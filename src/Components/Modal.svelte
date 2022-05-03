@@ -26,7 +26,6 @@
     font-family: "Radio Canada", sans-serif;
     z-index: 1001; /* Sit on top */
     padding-top: 100px; /* Location of the box */
-    animation: fadein 1s forwards;
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -35,7 +34,7 @@
     background-color: rgb(0, 0, 0); /* Fallback color */
     background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
     opacity: 0;
-    transition: opacity 1s ease;
+    transition: opacity 0.5s ease;
   }
 
   .modal-content {
