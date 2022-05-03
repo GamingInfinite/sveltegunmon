@@ -63,5 +63,6 @@
     z-index: 1000;
     color: black;
     background-color: white;
+    font-family: "Radio Canada", sans-serif;
   }
 </style>
