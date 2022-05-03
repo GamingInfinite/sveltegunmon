@@ -38,6 +38,7 @@
 </svelte:head>
 
 <style>
+
   #navbar {
     display: flex;
     justify-content: center;

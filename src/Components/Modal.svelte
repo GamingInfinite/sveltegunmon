@@ -20,12 +20,18 @@
 </div>
 
 <style>
+  @keyframes fadein {
+    from { opacity: 0 }
+    to { opacity: 1 }
+  }
+
   .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     font-family: "Radio Canada", sans-serif;
     z-index: 1001; /* Sit on top */
     padding-top: 100px; /* Location of the box */
+    animation: fadein 1s forwards;
     left: 0;
     top: 0;
     width: 100%; /* Full width */
