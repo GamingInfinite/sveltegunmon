@@ -145,11 +145,11 @@ function create_fragment(ctx) {
 			link1 = element("link");
 			link2 = element("link");
 			attr(div0, "id", "navbar");
-			attr(div0, "class", "svelte-182fq6j");
+			attr(div0, "class", "svelte-1gf7b6o");
 			attr(div1, "id", "version");
-			attr(div1, "class", "svelte-182fq6j");
+			attr(div1, "class", "svelte-1gf7b6o");
 			attr(canvas, "id", "overworld");
-			attr(canvas, "class", "svelte-182fq6j");
+			attr(canvas, "class", "svelte-1gf7b6o");
 			attr(link0, "rel", "preconnect");
 			attr(link0, "href", "https://fonts.googleapis.com");
 			attr(link1, "rel", "preconnect");
