@@ -21,7 +21,7 @@
 
 <style>
   @keyframes fadein {
-    from {opacity: 0},
+    from {opacity: 0}
     to {opacity: 1}
   }
 
@@ -31,6 +31,8 @@
     font-family: "Radio Canada", sans-serif;
     z-index: 1001; /* Sit on top */
     padding-top: 100px; /* Location of the box */
+    animation-name: fadein;
+    animation-duration: 1s;
     left: 0;
     top: 0;
     width: 100%; /* Full width */
