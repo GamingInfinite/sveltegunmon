@@ -20,6 +20,11 @@
 </div>
 
 <style>
+  @keyframes fadein {
+    from {opacity: 0},
+    to {opacity: 1}
+  }
+
   .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
