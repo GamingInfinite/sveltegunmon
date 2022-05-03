@@ -39,7 +39,7 @@ function create_default_slot_1(ctx) {
 	};
 }
 
-// (27:2) <Modal modal_title="Bag" id="bag">
+// (32:2) <Modal modal_title="Bag" id="bag">
 function create_default_slot(ctx) {
 	let div;
 
@@ -65,12 +65,16 @@ function create_fragment(ctx) {
 	let t0;
 	let navbutton1;
 	let t1;
+	let navbutton2;
+	let t2;
 	let div1;
-	let t3;
-	let modal0;
 	let t4;
-	let modal1;
+	let modal0;
 	let t5;
+	let modal1;
+	let t6;
+	let canvas;
+	let t7;
 	let link0;
 	let link1;
 	let link2;
@@ -89,6 +93,14 @@ function create_fragment(ctx) {
 				icon_link: "https://freeiconshop.com/wp-content/uploads/edd/shopping-bag-outline.png",
 				nav_title: "Bag",
 				modal_id: "bag"
+			}
+		});
+
+	navbutton2 = new NavButton({
+			props: {
+				icon_link: "https://www.shareicon.net/download/2016/08/06/807599_cards_512x512.png",
+				nav_title: "Trainer Card",
+				modal_id: "trcard"
 			}
 		});
 
@@ -118,20 +130,26 @@ function create_fragment(ctx) {
 			t0 = space();
 			create_component(navbutton1.$$.fragment);
 			t1 = space();
+			create_component(navbutton2.$$.fragment);
+			t2 = space();
 			div1 = element("div");
-			div1.textContent = "1.0.1";
-			t3 = space();
-			create_component(modal0.$$.fragment);
+			div1.textContent = "1.0.2";
 			t4 = space();
-			create_component(modal1.$$.fragment);
+			create_component(modal0.$$.fragment);
 			t5 = space();
+			create_component(modal1.$$.fragment);
+			t6 = space();
+			canvas = element("canvas");
+			t7 = space();
 			link0 = element("link");
 			link1 = element("link");
 			link2 = element("link");
 			attr(div0, "id", "navbar");
-			attr(div0, "class", "svelte-1flu7ft");
+			attr(div0, "class", "svelte-182fq6j");
 			attr(div1, "id", "version");
-			attr(div1, "class", "svelte-1flu7ft");
+			attr(div1, "class", "svelte-182fq6j");
+			attr(canvas, "id", "overworld");
+			attr(canvas, "class", "svelte-182fq6j");
 			attr(link0, "rel", "preconnect");
 			attr(link0, "href", "https://fonts.googleapis.com");
 			attr(link1, "rel", "preconnect");
@@ -146,13 +164,17 @@ function create_fragment(ctx) {
 			mount_component(navbutton0, div0, null);
 			append(div0, t0);
 			mount_component(navbutton1, div0, null);
-			append(body, t1);
+			append(div0, t1);
+			mount_component(navbutton2, div0, null);
+			append(body, t2);
 			append(body, div1);
-			append(body, t3);
-			mount_component(modal0, body, null);
 			append(body, t4);
+			mount_component(modal0, body, null);
+			append(body, t5);
 			mount_component(modal1, body, null);
-			insert(target, t5, anchor);
+			append(body, t6);
+			append(body, canvas);
+			insert(target, t7, anchor);
 			append(document.head, link0);
 			append(document.head, link1);
 			append(document.head, link2);
@@ -178,6 +200,7 @@ function create_fragment(ctx) {
 			if (current) return;
 			transition_in(navbutton0.$$.fragment, local);
 			transition_in(navbutton1.$$.fragment, local);
+			transition_in(navbutton2.$$.fragment, local);
 			transition_in(modal0.$$.fragment, local);
 			transition_in(modal1.$$.fragment, local);
 			current = true;
@@ -185,6 +208,7 @@ function create_fragment(ctx) {
 		o(local) {
 			transition_out(navbutton0.$$.fragment, local);
 			transition_out(navbutton1.$$.fragment, local);
+			transition_out(navbutton2.$$.fragment, local);
 			transition_out(modal0.$$.fragment, local);
 			transition_out(modal1.$$.fragment, local);
 			current = false;
@@ -193,9 +217,10 @@ function create_fragment(ctx) {
 			if (detaching) detach(body);
 			destroy_component(navbutton0);
 			destroy_component(navbutton1);
+			destroy_component(navbutton2);
 			destroy_component(modal0);
 			destroy_component(modal1);
-			if (detaching) detach(t5);
+			if (detaching) detach(t7);
 			detach(link0);
 			detach(link1);
 			detach(link2);
