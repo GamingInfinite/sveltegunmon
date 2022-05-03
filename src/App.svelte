@@ -16,6 +16,9 @@
       modal_id="bag"
     />
   </div>
+  <div id="version">
+    1.0.0
+  </div>
   <Modal modal_title="Party" id="party">
       <div>
           Idk how this is gonna be formatted
@@ -38,7 +41,6 @@
 </svelte:head>
 
 <style>
-
   #navbar {
     display: flex;
     justify-content: center;
@@ -52,5 +54,14 @@
     width: 5vw;
     z-index: 1000;
     background-color: rgb(108, 54, 196);
+  }
+
+  #version {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+    color: black;
+    background-color: white;
   }
 </style>
