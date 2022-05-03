@@ -20,9 +20,19 @@
       nav_title="Trainer Card" 
       modal_id="trcard" 
     />
+    <NavButton
+      icon_link="https://www.shareicon.net/download/2015/10/04/111864_gear_512x512.png"
+      nav_title="Settings"
+      modal_id="settings"
+    />
+    <NavButton
+      icon_link="https://cdn0.iconfinder.com/data/icons/google-material-design-3-0/48/ic_info_outline_48px-512.png"
+      nav_title="About"
+      modal_id="about"
+    />
   </div>
   <div id="version">
-    1.0.2
+    1.0.3
   </div>
   <Modal modal_title="Party" id="party">
       <div>
@@ -33,6 +43,21 @@
       <div>
           Idk how this is gonna be formatted
       </div>
+  </Modal>
+  <Modal modal_title="Trainer Card" id="trcard">
+    <div>
+      Some sort of trainer card creator.
+    </div>
+  </Modal>
+  <Modal modal_title="Settings" id="settings">
+    <div>
+      This will have UI customization, account stuff, and a bunch more later.
+    </div>
+  </Modal>
+  <Modal modal_title="About" id="about">
+    <div>
+      This will have information about all the backend stuff like how it was made with Svelte and uses GUN.js for online functionality and uses pokeapi.co for getting information on all the existing pokemon and their regions.
+    </div>
   </Modal>
   <canvas id="overworld">
 </body>
