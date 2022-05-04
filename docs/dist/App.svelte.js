@@ -43,7 +43,7 @@ function create_default_slot_4(ctx) {
 	};
 }
 
-// (63:2) <Modal modal_title="Bag" id="bag">
+// (67:2) <Modal modal_title="Bag" id="bag">
 function create_default_slot_3(ctx) {
 	let div;
 
@@ -62,7 +62,7 @@ function create_default_slot_3(ctx) {
 	};
 }
 
-// (66:2) <Modal modal_title="Trainer Card" id="trcard">
+// (70:2) <Modal modal_title="Trainer Card" id="trcard">
 function create_default_slot_2(ctx) {
 	let div;
 
@@ -81,25 +81,46 @@ function create_default_slot_2(ctx) {
 	};
 }
 
-// (69:2) <Modal modal_title="Settings" id="settings">
+// (73:2) <Modal modal_title="Settings" id="settings">
 function create_default_slot_1(ctx) {
-	let div;
+	let div2;
+	let div0;
 	let hsvpicker;
+	let t0;
+	let div1;
 	let current;
-	hsvpicker = new HsvPicker({ props: { startColor: "#FFFFFF" } });
-	hsvpicker.$on("colorChange", /*colorCallback*/ ctx[0]);
+
+	hsvpicker = new HsvPicker({
+			props: { startColor: /*startColor*/ ctx[0] }
+		});
+
+	hsvpicker.$on("colorChange", /*colorCallback*/ ctx[1]);
 
 	return {
 		c() {
-			div = element("div");
+			div2 = element("div");
+			div0 = element("div");
 			create_component(hsvpicker.$$.fragment);
+			t0 = space();
+			div1 = element("div");
+			div1.textContent = "Sign In/Up";
+			attr(div0, "class", "settingscol svelte-8n3em5");
+			attr(div1, "class", "settingscol svelte-8n3em5");
+			attr(div2, "class", "settings svelte-8n3em5");
 		},
 		m(target, anchor) {
-			insert(target, div, anchor);
-			mount_component(hsvpicker, div, null);
+			insert(target, div2, anchor);
+			append(div2, div0);
+			mount_component(hsvpicker, div0, null);
+			append(div2, t0);
+			append(div2, div1);
 			current = true;
 		},
-		p: noop,
+		p(ctx, dirty) {
+			const hsvpicker_changes = {};
+			if (dirty & /*startColor*/ 1) hsvpicker_changes.startColor = /*startColor*/ ctx[0];
+			hsvpicker.$set(hsvpicker_changes);
+		},
 		i(local) {
 			if (current) return;
 			transition_in(hsvpicker.$$.fragment, local);
@@ -110,13 +131,13 @@ function create_default_slot_1(ctx) {
 			current = false;
 		},
 		d(detaching) {
-			if (detaching) detach(div);
+			if (detaching) detach(div2);
 			destroy_component(hsvpicker);
 		}
 	};
 }
 
-// (74:2) <Modal modal_title="About" id="about">
+// (81:2) <Modal modal_title="About" id="about">
 function create_default_slot(ctx) {
 	let div;
 
@@ -146,11 +167,11 @@ function create_default_slot(ctx) {
         and ALL content related to Pokemon and replace it with my own (hopefully
         user currated) data. This project would not be getting off the ground
         without PokeAPI.</p> 
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Svelte_Logo.svg/1200px-Svelte_Logo.svg.png" alt="svelte" class="aboutlogo svelte-udpev6"/> 
-      <img src="https://camo.githubusercontent.com/64213f411349db936a0fa36ef41741b170d4c8d34d1cc0d1c887f7d880838707/68747470733a2f2f636c6475702e636f6d2f5445793979476834356c2e737667" alt="gunjs" class="aboutlogo svelte-udpev6"/> 
-      <img src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" alt="pokeapi" class="aboutlogo svelte-udpev6"/>`;
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Svelte_Logo.svg/1200px-Svelte_Logo.svg.png" alt="svelte" class="aboutlogo svelte-8n3em5"/> 
+      <img src="https://camo.githubusercontent.com/64213f411349db936a0fa36ef41741b170d4c8d34d1cc0d1c887f7d880838707/68747470733a2f2f636c6475702e636f6d2f5445793979476834356c2e737667" alt="gunjs" class="aboutlogo svelte-8n3em5"/> 
+      <img src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" alt="pokeapi" class="aboutlogo svelte-8n3em5"/>`;
 
-			attr(div, "class", "about svelte-udpev6");
+			attr(div, "class", "about svelte-8n3em5");
 		},
 		m(target, anchor) {
 			insert(target, div, anchor);
@@ -312,11 +333,11 @@ function create_fragment(ctx) {
 			link1 = element("link");
 			link2 = element("link");
 			attr(div0, "id", "navbar");
-			attr(div0, "class", "svelte-udpev6");
+			attr(div0, "class", "svelte-8n3em5");
 			attr(div1, "id", "version");
-			attr(div1, "class", "svelte-udpev6");
+			attr(div1, "class", "svelte-8n3em5");
 			attr(canvas, "id", "overworld");
-			attr(canvas, "class", "svelte-udpev6");
+			attr(canvas, "class", "svelte-8n3em5");
 			attr(link0, "rel", "preconnect");
 			attr(link0, "href", "https://fonts.googleapis.com");
 			attr(link1, "rel", "preconnect");
@@ -360,35 +381,35 @@ function create_fragment(ctx) {
 		p(ctx, [dirty]) {
 			const modal0_changes = {};
 
-			if (dirty & /*$$scope*/ 2) {
+			if (dirty & /*$$scope*/ 4) {
 				modal0_changes.$$scope = { dirty, ctx };
 			}
 
 			modal0.$set(modal0_changes);
 			const modal1_changes = {};
 
-			if (dirty & /*$$scope*/ 2) {
+			if (dirty & /*$$scope*/ 4) {
 				modal1_changes.$$scope = { dirty, ctx };
 			}
 
 			modal1.$set(modal1_changes);
 			const modal2_changes = {};
 
-			if (dirty & /*$$scope*/ 2) {
+			if (dirty & /*$$scope*/ 4) {
 				modal2_changes.$$scope = { dirty, ctx };
 			}
 
 			modal2.$set(modal2_changes);
 			const modal3_changes = {};
 
-			if (dirty & /*$$scope*/ 2) {
+			if (dirty & /*$$scope, startColor*/ 5) {
 				modal3_changes.$$scope = { dirty, ctx };
 			}
 
 			modal3.$set(modal3_changes);
 			const modal4_changes = {};
 
-			if (dirty & /*$$scope*/ 2) {
+			if (dirty & /*$$scope*/ 4) {
 				modal4_changes.$$scope = { dirty, ctx };
 			}
 
@@ -441,14 +462,20 @@ function create_fragment(ctx) {
 	};
 }
 
-function instance($$self) {
-	if (colors == null) {
-		colors = { r: 0, g: 0, b: 0, a: 1 };
-	}
+function componentToHex(c) {
+	var hex = c.toString(16);
+	return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(r, g, b) {
+	return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+} // return "#FFFFFF";
+
+function instance($$self, $$props, $$invalidate) {
+	var startColor = JSON.parse(localStorage.getItem("colors"));
 
 	function colorCallback(rgba) {
 		colors.set(rgba.detail);
-		console.log(rgba.detail);
 	}
 
 	colors.subscribe(value => {
@@ -457,9 +484,11 @@ function instance($$self) {
 		if (navbar != null) {
 			navbar.style.backgroundColor = "rgb(" + value.r + "," + value.g + "," + value.b + ")";
 		}
+
+		$$invalidate(0, startColor = rgbToHex(value.r, value.g, value.b));
 	});
 
-	return [colorCallback];
+	return [startColor, colorCallback];
 }
 
 class App extends SvelteComponent {
