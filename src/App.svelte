@@ -6,26 +6,30 @@
 
   import { colors } from "./stores";
 
-  if (colors == null) {
-    colors = {
-      r: 0,
-      g: 0,
-      b: 0,
-      a: 1,
-    };
-  }
+  var startColor = JSON.parse(localStorage.getItem("colors"));
 
   function colorCallback(rgba) {
     colors.set(rgba.detail);
-    console.log(rgba.detail);
   }
 
-  colors.subscribe(value => {
-      var navbar = document.getElementById("navbar");
-      if (navbar != null){
-        navbar.style.backgroundColor = "rgb(" + value.r + "," + value.g + "," + value.b + ")"
-      }
-  })
+  colors.subscribe((value) => {
+    var navbar = document.getElementById("navbar");
+    if (navbar != null) {
+      navbar.style.backgroundColor =
+        "rgb(" + value.r + "," + value.g + "," + value.b + ")";
+    }
+    startColor = rgbToHex(value.r, value.g, value.b);
+  });
+
+  function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+  }
+
+  function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+    // return "#FFFFFF";
+  }
 </script>
 
 <body>
@@ -67,8 +71,11 @@
     <div>Some sort of trainer card creator.</div>
   </Modal>
   <Modal modal_title="Settings" id="settings">
-    <div>
-      <HsvPicker on:colorChange={colorCallback} startColor={"#FFFFFF"} />
+    <div class="settings">
+      <div class="settingscol">
+        <HsvPicker on:colorChange={colorCallback} {startColor} />
+      </div>
+      <div class="settingscol">Sign In/Up</div>
     </div>
   </Modal>
   <Modal modal_title="About" id="about">
@@ -162,6 +169,21 @@
     right: 0;
     top: 0;
     background-color: maroon;
+  }
+
+  .settings {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .settingscol {
+    flex-direction: column;
+    margin-right: 1rem;
+  }
+
+  .settingscol:last-of-type {
+    flex-direction: column;
+    margin-right: 0rem;
   }
 
   .about {

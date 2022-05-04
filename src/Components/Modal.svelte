@@ -57,6 +57,10 @@
     border-radius: 20px;
   }
 
+  header {
+    margin-bottom: 1rem;
+  }
+
   .close {
     color: #aaaaaa;
     float: right;
