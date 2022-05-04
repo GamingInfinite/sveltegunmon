@@ -43,7 +43,7 @@ function create_default_slot_4(ctx) {
 	};
 }
 
-// (67:2) <Modal modal_title="Bag" id="bag">
+// (83:2) <Modal modal_title="Bag" id="bag">
 function create_default_slot_3(ctx) {
 	let div;
 
@@ -62,7 +62,7 @@ function create_default_slot_3(ctx) {
 	};
 }
 
-// (70:2) <Modal modal_title="Trainer Card" id="trcard">
+// (86:2) <Modal modal_title="Trainer Card" id="trcard">
 function create_default_slot_2(ctx) {
 	let div;
 
@@ -81,7 +81,7 @@ function create_default_slot_2(ctx) {
 	};
 }
 
-// (73:2) <Modal modal_title="Settings" id="settings">
+// (89:2) <Modal modal_title="Settings" id="settings">
 function create_default_slot_1(ctx) {
 	let div2;
 	let div0;
@@ -137,7 +137,7 @@ function create_default_slot_1(ctx) {
 	};
 }
 
-// (81:2) <Modal modal_title="About" id="about">
+// (97:2) <Modal modal_title="About" id="about">
 function create_default_slot(ctx) {
 	let div;
 
@@ -474,6 +474,12 @@ function rgbToHex(r, g, b) {
 function instance($$self, $$props, $$invalidate) {
 	var startColor = JSON.parse(localStorage.getItem("colors"));
 
+	if (startColor == null) {
+		startColor = { r: 255, g: 255, b: 255, a: 1 };
+	}
+
+	startColor = rgbToHex(startColor.r, startColor.g, startColor.b);
+
 	function colorCallback(rgba) {
 		colors.set(rgba.detail);
 	}
@@ -482,10 +488,18 @@ function instance($$self, $$props, $$invalidate) {
 		var navbar = document.getElementById("navbar");
 
 		if (navbar != null) {
+			if (value == null) {
+				navbar.style.backgroundColor = "rgb(" + startColor.r + "," + startColor.g + "," + startColor.b + ")";
+			}
+
 			navbar.style.backgroundColor = "rgb(" + value.r + "," + value.g + "," + value.b + ")";
 		}
 
-		$$invalidate(0, startColor = rgbToHex(value.r, value.g, value.b));
+		if (value == null) {
+			
+		} else {
+			$$invalidate(0, startColor = rgbToHex(value.r, value.g, value.b));
+		}
 	});
 
 	return [startColor, colorCallback];
