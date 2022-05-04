@@ -2,9 +2,9 @@
   export let icon_link, nav_title, modal_id;
 
   function handleclick() {
-      var modal = document.getElementById(modal_id);
-      modal.style.display = "block";
-      modal.style.opacity = 1;
+    var modal = document.getElementById(modal_id);
+    modal.style.display = "block";
+    modal.style.opacity = 1;
   }
 </script>
 

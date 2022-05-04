@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "svelte": "^3.48.0"
+    "svelte": "^3.48.0",
+    "svelte-color-picker": "^1.0.7"
   },
   "devDependencies": {
     "@snowpack/plugin-svelte": "^3.7.0",

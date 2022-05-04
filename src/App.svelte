@@ -1,6 +1,31 @@
 <script>
+  import { HsvPicker } from "svelte-color-picker";
+
   import NavButton from "./Components/NavButton.svelte";
   import Modal from "./Components/Modal.svelte";
+
+  import { colors } from "./stores";
+
+  if (colors == null) {
+    colors = {
+      r: 0,
+      g: 0,
+      b: 0,
+      a: 1,
+    };
+  }
+
+  function colorCallback(rgba) {
+    colors.set(rgba.detail);
+    console.log(rgba.detail);
+  }
+
+  colors.subscribe(value => {
+      var navbar = document.getElementById("navbar");
+      if (navbar != null){
+        navbar.style.backgroundColor = "rgb(" + value.r + "," + value.g + "," + value.b + ")"
+      }
+  })
 </script>
 
 <body>
@@ -15,13 +40,13 @@
       nav_title="Bag"
       modal_id="bag"
     />
-    <NavButton 
-      icon_link="https://www.shareicon.net/download/2016/08/06/807599_cards_512x512.png" 
-      nav_title="Trainer Card" 
-      modal_id="trcard" 
+    <NavButton
+      icon_link="https://www.shareicon.net/download/2016/08/06/807599_cards_512x512.png"
+      nav_title="Trainer Card"
+      modal_id="trcard"
     />
     <NavButton
-      icon_link="https://www.shareicon.net/download/2015/10/04/111864_gear_512x512.png"
+      icon_link="http://cdn.onlinewebfonts.com/svg/img_537102.png"
       nav_title="Settings"
       modal_id="settings"
     />
@@ -31,35 +56,69 @@
       modal_id="about"
     />
   </div>
-  <div id="version">
-    1.0.3
-  </div>
+  <div id="version">1.0.0</div>
   <Modal modal_title="Party" id="party">
-      <div>
-          Idk how this is gonna be formatted
-      </div>
+    <div>Idk how this is gonna be formatted</div>
   </Modal>
   <Modal modal_title="Bag" id="bag">
-      <div>
-          Idk how this is gonna be formatted
-      </div>
+    <div>Idk how this is gonna be formatted</div>
   </Modal>
   <Modal modal_title="Trainer Card" id="trcard">
-    <div>
-      Some sort of trainer card creator.
-    </div>
+    <div>Some sort of trainer card creator.</div>
   </Modal>
   <Modal modal_title="Settings" id="settings">
     <div>
-      This will have UI customization, account stuff, and a bunch more later.
+      <HsvPicker on:colorChange={colorCallback} startColor={"#FFFFFF"} />
     </div>
   </Modal>
   <Modal modal_title="About" id="about">
-    <div>
-      This will have information about all the backend stuff like how it was made with Svelte and uses GUN.js for online functionality and uses pokeapi.co for getting information on all the existing pokemon and their regions.
+    <div class="about">
+      <p>
+        Most websites are designed much like a body is. The way it's structured
+        are the bones, the way works behind the scenes are nerves, and the way
+        that it looks is the skin. In most cases the way a website looks is
+        completely customized to what the creator wants it to look like, as is
+        the case with this one, in most large scale projects the bones and
+        nerves are made up of 3rd-party packages that give HTML, Javascript, and
+        CSS more power.
+      </p>
+      <p>
+        This site is powered by Svelte for the frontend design, and it's online
+        support (while not finished yet), is powered by GUN.js. Svelte is what
+        is known as a React Framework, which is essentially a frontend tool that
+        allows the programmer to interact with the elements more easily and
+        effectively. GUN.js is a decentralized database that works via peer to
+        peer networking and relay servers. It effectively creates a network of
+        computers that all have different pieces of the database, but when
+        they're all online it creates one massive database that could
+        potentially hold a LOT of data.
+      </p>
+      <p>
+        One other huge shoutout is PokeAPI, an API backend for any web
+        application to get literally any and all data they could ever want about
+        Pokemon. If this project ends up becoming large enough I will remove any
+        and ALL content related to Pokemon and replace it with my own (hopefully
+        user currated) data. This project would not be getting off the ground
+        without PokeAPI.
+      </p>
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Svelte_Logo.svg/1200px-Svelte_Logo.svg.png"
+        alt="svelte"
+        class="aboutlogo"
+      />
+      <img
+        src="https://camo.githubusercontent.com/64213f411349db936a0fa36ef41741b170d4c8d34d1cc0d1c887f7d880838707/68747470733a2f2f636c6475702e636f6d2f5445793979476834356c2e737667"
+        alt="gunjs"
+        class="aboutlogo"
+      />
+      <img
+        src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png"
+        alt="pokeapi"
+        class="aboutlogo"
+      />
     </div>
   </Modal>
-  <canvas id="overworld">
+  <canvas id="overworld" />
 </body>
 
 <svelte:head>
@@ -84,7 +143,6 @@
     height: 100vh;
     width: 5vw;
     z-index: 1000;
-    background-color: rgb(108, 54, 196);
   }
 
   #version {
@@ -104,5 +162,13 @@
     right: 0;
     top: 0;
     background-color: maroon;
+  }
+
+  .about {
+    text-align: center;
+  }
+
+  .aboutlogo {
+    height: 10vh;
   }
 </style>
