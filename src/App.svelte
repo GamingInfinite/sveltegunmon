@@ -7,6 +7,15 @@
   import { colors } from "./stores";
 
   var startColor = JSON.parse(localStorage.getItem("colors"));
+  if (startColor == null) {
+    startColor = {
+      r: 255,
+      g: 255,
+      b: 255,
+      a: 1,
+    };
+  }
+  startColor = rgbToHex(startColor.r, startColor.g, startColor.b);
 
   function colorCallback(rgba) {
     colors.set(rgba.detail);
@@ -15,10 +24,17 @@
   colors.subscribe((value) => {
     var navbar = document.getElementById("navbar");
     if (navbar != null) {
+      if (value == null) {
+        navbar.style.backgroundColor =
+          "rgb(" + startColor.r + "," + startColor.g + "," + startColor.b + ")";
+      }
       navbar.style.backgroundColor =
         "rgb(" + value.r + "," + value.g + "," + value.b + ")";
     }
-    startColor = rgbToHex(value.r, value.g, value.b);
+    if (value == null) {
+    } else {
+      startColor = rgbToHex(value.r, value.g, value.b);
+    }
   });
 
   function componentToHex(c) {
