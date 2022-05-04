@@ -1,5 +1,6 @@
 {
   "imports": {
+    "svelte-color-picker": "./svelte-color-picker.js",
     "svelte/internal": "./svelte/internal.js",
     "svelte/store": "./svelte/store.js"
   }
