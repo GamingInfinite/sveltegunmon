@@ -8,6 +8,7 @@ import {
 	destroy_component,
 	detach,
 	element,
+	globals,
 	init,
 	insert,
 	mount_component,
@@ -18,8 +19,11 @@ import {
 	transition_out
 } from "../snowpack/pkg/svelte/internal.js";
 
+const { document: document_1 } = globals;
+import { HsvPicker } from "../snowpack/pkg/svelte-color-picker.js";
 import NavButton from "./Components/NavButton.svelte.js";
 import Modal from "./Components/Modal.svelte.js";
+import { colors } from "./stores.js";
 
 function create_default_slot_4(ctx) {
 	let div;
@@ -39,7 +43,7 @@ function create_default_slot_4(ctx) {
 	};
 }
 
-// (42:2) <Modal modal_title="Bag" id="bag">
+// (63:2) <Modal modal_title="Bag" id="bag">
 function create_default_slot_3(ctx) {
 	let div;
 
@@ -58,7 +62,7 @@ function create_default_slot_3(ctx) {
 	};
 }
 
-// (47:2) <Modal modal_title="Trainer Card" id="trcard">
+// (66:2) <Modal modal_title="Trainer Card" id="trcard">
 function create_default_slot_2(ctx) {
 	let div;
 
@@ -77,33 +81,76 @@ function create_default_slot_2(ctx) {
 	};
 }
 
-// (52:2) <Modal modal_title="Settings" id="settings">
+// (69:2) <Modal modal_title="Settings" id="settings">
 function create_default_slot_1(ctx) {
 	let div;
+	let hsvpicker;
+	let current;
+	hsvpicker = new HsvPicker({ props: { startColor: "#FFFFFF" } });
+	hsvpicker.$on("colorChange", /*colorCallback*/ ctx[0]);
 
 	return {
 		c() {
 			div = element("div");
-			div.textContent = "This will have UI customization, account stuff, and a bunch more later.";
+			create_component(hsvpicker.$$.fragment);
 		},
 		m(target, anchor) {
 			insert(target, div, anchor);
+			mount_component(hsvpicker, div, null);
+			current = true;
 		},
 		p: noop,
+		i(local) {
+			if (current) return;
+			transition_in(hsvpicker.$$.fragment, local);
+			current = true;
+		},
+		o(local) {
+			transition_out(hsvpicker.$$.fragment, local);
+			current = false;
+		},
 		d(detaching) {
 			if (detaching) detach(div);
+			destroy_component(hsvpicker);
 		}
 	};
 }
 
-// (57:2) <Modal modal_title="About" id="about">
+// (74:2) <Modal modal_title="About" id="about">
 function create_default_slot(ctx) {
 	let div;
 
 	return {
 		c() {
 			div = element("div");
-			div.textContent = "This will have information about all the backend stuff like how it was made with Svelte and uses GUN.js for online functionality and uses pokeapi.co for getting information on all the existing pokemon and their regions.";
+
+			div.innerHTML = `<p>Most websites are designed much like a body is. The way it&#39;s structured
+        are the bones, the way works behind the scenes are nerves, and the way
+        that it looks is the skin. In most cases the way a website looks is
+        completely customized to what the creator wants it to look like, as is
+        the case with this one, in most large scale projects the bones and
+        nerves are made up of 3rd-party packages that give HTML, Javascript, and
+        CSS more power.</p> 
+      <p>This site is powered by Svelte for the frontend design, and it&#39;s online
+        support (while not finished yet), is powered by GUN.js. Svelte is what
+        is known as a React Framework, which is essentially a frontend tool that
+        allows the programmer to interact with the elements more easily and
+        effectively. GUN.js is a decentralized database that works via peer to
+        peer networking and relay servers. It effectively creates a network of
+        computers that all have different pieces of the database, but when
+        they&#39;re all online it creates one massive database that could
+        potentially hold a LOT of data.</p> 
+      <p>One other huge shoutout is PokeAPI, an API backend for any web
+        application to get literally any and all data they could ever want about
+        Pokemon. If this project ends up becoming large enough I will remove any
+        and ALL content related to Pokemon and replace it with my own (hopefully
+        user currated) data. This project would not be getting off the ground
+        without PokeAPI.</p> 
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Svelte_Logo.svg/1200px-Svelte_Logo.svg.png" alt="svelte" class="aboutlogo svelte-udpev6"/> 
+      <img src="https://camo.githubusercontent.com/64213f411349db936a0fa36ef41741b170d4c8d34d1cc0d1c887f7d880838707/68747470733a2f2f636c6475702e636f6d2f5445793979476834356c2e737667" alt="gunjs" class="aboutlogo svelte-udpev6"/> 
+      <img src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" alt="pokeapi" class="aboutlogo svelte-udpev6"/>`;
+
+			attr(div, "class", "about svelte-udpev6");
 		},
 		m(target, anchor) {
 			insert(target, div, anchor);
@@ -173,7 +220,7 @@ function create_fragment(ctx) {
 
 	navbutton3 = new NavButton({
 			props: {
-				icon_link: "https://www.shareicon.net/download/2015/10/04/111864_gear_512x512.png",
+				icon_link: "http://cdn.onlinewebfonts.com/svg/img_537102.png",
 				nav_title: "Settings",
 				modal_id: "settings"
 			}
@@ -247,7 +294,7 @@ function create_fragment(ctx) {
 			create_component(navbutton4.$$.fragment);
 			t4 = space();
 			div1 = element("div");
-			div1.textContent = "1.0.3";
+			div1.textContent = "1.0.0";
 			t6 = space();
 			create_component(modal0.$$.fragment);
 			t7 = space();
@@ -265,11 +312,11 @@ function create_fragment(ctx) {
 			link1 = element("link");
 			link2 = element("link");
 			attr(div0, "id", "navbar");
-			attr(div0, "class", "svelte-1gf7b6o");
+			attr(div0, "class", "svelte-udpev6");
 			attr(div1, "id", "version");
-			attr(div1, "class", "svelte-1gf7b6o");
+			attr(div1, "class", "svelte-udpev6");
 			attr(canvas, "id", "overworld");
-			attr(canvas, "class", "svelte-1gf7b6o");
+			attr(canvas, "class", "svelte-udpev6");
 			attr(link0, "rel", "preconnect");
 			attr(link0, "href", "https://fonts.googleapis.com");
 			attr(link1, "rel", "preconnect");
@@ -305,43 +352,43 @@ function create_fragment(ctx) {
 			append(body, t11);
 			append(body, canvas);
 			insert(target, t12, anchor);
-			append(document.head, link0);
-			append(document.head, link1);
-			append(document.head, link2);
+			append(document_1.head, link0);
+			append(document_1.head, link1);
+			append(document_1.head, link2);
 			current = true;
 		},
 		p(ctx, [dirty]) {
 			const modal0_changes = {};
 
-			if (dirty & /*$$scope*/ 1) {
+			if (dirty & /*$$scope*/ 2) {
 				modal0_changes.$$scope = { dirty, ctx };
 			}
 
 			modal0.$set(modal0_changes);
 			const modal1_changes = {};
 
-			if (dirty & /*$$scope*/ 1) {
+			if (dirty & /*$$scope*/ 2) {
 				modal1_changes.$$scope = { dirty, ctx };
 			}
 
 			modal1.$set(modal1_changes);
 			const modal2_changes = {};
 
-			if (dirty & /*$$scope*/ 1) {
+			if (dirty & /*$$scope*/ 2) {
 				modal2_changes.$$scope = { dirty, ctx };
 			}
 
 			modal2.$set(modal2_changes);
 			const modal3_changes = {};
 
-			if (dirty & /*$$scope*/ 1) {
+			if (dirty & /*$$scope*/ 2) {
 				modal3_changes.$$scope = { dirty, ctx };
 			}
 
 			modal3.$set(modal3_changes);
 			const modal4_changes = {};
 
-			if (dirty & /*$$scope*/ 1) {
+			if (dirty & /*$$scope*/ 2) {
 				modal4_changes.$$scope = { dirty, ctx };
 			}
 
@@ -394,10 +441,31 @@ function create_fragment(ctx) {
 	};
 }
 
+function instance($$self) {
+	if (colors == null) {
+		colors = { r: 0, g: 0, b: 0, a: 1 };
+	}
+
+	function colorCallback(rgba) {
+		colors.set(rgba.detail);
+		console.log(rgba.detail);
+	}
+
+	colors.subscribe(value => {
+		var navbar = document.getElementById("navbar");
+
+		if (navbar != null) {
+			navbar.style.backgroundColor = "rgb(" + value.r + "," + value.g + "," + value.b + ")";
+		}
+	});
+
+	return [colorCallback];
+}
+
 class App extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, null, create_fragment, safe_not_equal, {});
+		init(this, options, instance, create_fragment, safe_not_equal, {});
 	}
 }
 

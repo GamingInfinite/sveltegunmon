@@ -78,6 +78,27 @@ function get_all_dirty_from_scope($$scope) {
 function append(target, node) {
   target.appendChild(node);
 }
+function append_styles(target, style_sheet_id, styles) {
+  const append_styles_to = get_root_for_style(target);
+  if (!append_styles_to.getElementById(style_sheet_id)) {
+    const style = element("style");
+    style.id = style_sheet_id;
+    style.textContent = styles;
+    append_stylesheet(append_styles_to, style);
+  }
+}
+function get_root_for_style(node) {
+  if (!node)
+    return document;
+  const root = node.getRootNode ? node.getRootNode() : node.ownerDocument;
+  if (root && root.host) {
+    return root;
+  }
+  return node.ownerDocument;
+}
+function append_stylesheet(node, style) {
+  append(node.head || node, style);
+}
 function insert(target, node, anchor) {
   target.insertBefore(node, anchor || null);
 }
@@ -111,9 +132,36 @@ function set_data(text2, data) {
   if (text2.wholeText !== data)
     text2.data = data;
 }
+function custom_event(type, detail, {bubbles = false, cancelable = false} = {}) {
+  const e = document.createEvent("CustomEvent");
+  e.initCustomEvent(type, bubbles, cancelable, detail);
+  return e;
+}
 let current_component;
 function set_current_component(component) {
   current_component = component;
+}
+function get_current_component() {
+  if (!current_component)
+    throw new Error("Function called outside component initialization");
+  return current_component;
+}
+function onMount(fn) {
+  get_current_component().$$.on_mount.push(fn);
+}
+function createEventDispatcher() {
+  const component = get_current_component();
+  return (type, detail, {cancelable = false} = {}) => {
+    const callbacks = component.$$.callbacks[type];
+    if (callbacks) {
+      const event = custom_event(type, detail, {cancelable});
+      callbacks.slice().forEach((fn) => {
+        fn.call(component, event);
+      });
+      return !event.defaultPrevented;
+    }
+    return true;
+  };
 }
 const dirty_components = [];
 const binding_callbacks = [];
@@ -196,6 +244,7 @@ function transition_out(block, local, detach2, callback) {
     block.o(local);
   }
 }
+const globals = typeof window !== "undefined" ? window : typeof globalThis !== "undefined" ? globalThis : global;
 function create_component(block) {
   block && block.c();
 }
@@ -307,4 +356,4 @@ class SvelteComponent {
   }
 }
 
-export { SvelteComponent as S, append as a, attr as b, create_component as c, destroy_component as d, detach as e, element as f, insert as g, space as h, init as i, transition_out as j, create_slot as k, get_all_dirty_from_scope as l, mount_component as m, noop as n, get_slot_changes as o, listen as p, set_data as q, text as r, safe_not_equal as s, transition_in as t, update_slot_base as u, src_url_equal as v };
+export { src_url_equal as A, SvelteComponent as S, append_styles as a, space as b, attr as c, insert as d, element as e, append as f, set_data as g, detach as h, init as i, createEventDispatcher as j, create_component as k, listen as l, destroy_component as m, noop as n, onMount as o, globals as p, mount_component as q, run_all as r, safe_not_equal as s, text as t, transition_in as u, transition_out as v, create_slot as w, get_all_dirty_from_scope as x, get_slot_changes as y, update_slot_base as z };
