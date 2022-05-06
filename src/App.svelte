@@ -3,6 +3,7 @@
 
   import NavButton from "./Components/NavButton.svelte";
   import Modal from "./Components/Modal.svelte";
+  import Party from "./Components/Party.svelte";
 
   import { colors } from "./stores";
 
@@ -78,7 +79,9 @@
   </div>
   <div id="version">1.0.0</div>
   <Modal modal_title="Party" id="party">
-    <div>Idk how this is gonna be formatted</div>
+    <div>
+      <Party />
+    </div>
   </Modal>
   <Modal modal_title="Bag" id="bag">
     <div>Idk how this is gonna be formatted</div>
