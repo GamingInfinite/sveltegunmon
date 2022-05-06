@@ -23,27 +23,43 @@ const { document: document_1 } = globals;
 import { HsvPicker } from "../snowpack/pkg/svelte-color-picker.js";
 import NavButton from "./Components/NavButton.svelte.js";
 import Modal from "./Components/Modal.svelte.js";
+import Party from "./Components/Party.svelte.js";
 import { colors } from "./stores.js";
 
 function create_default_slot_4(ctx) {
 	let div;
+	let party;
+	let current;
+	party = new Party({});
 
 	return {
 		c() {
 			div = element("div");
-			div.textContent = "Idk how this is gonna be formatted";
+			create_component(party.$$.fragment);
 		},
 		m(target, anchor) {
 			insert(target, div, anchor);
+			mount_component(party, div, null);
+			current = true;
 		},
 		p: noop,
+		i(local) {
+			if (current) return;
+			transition_in(party.$$.fragment, local);
+			current = true;
+		},
+		o(local) {
+			transition_out(party.$$.fragment, local);
+			current = false;
+		},
 		d(detaching) {
 			if (detaching) detach(div);
+			destroy_component(party);
 		}
 	};
 }
 
-// (83:2) <Modal modal_title="Bag" id="bag">
+// (86:2) <Modal modal_title="Bag" id="bag">
 function create_default_slot_3(ctx) {
 	let div;
 
@@ -62,7 +78,7 @@ function create_default_slot_3(ctx) {
 	};
 }
 
-// (86:2) <Modal modal_title="Trainer Card" id="trcard">
+// (89:2) <Modal modal_title="Trainer Card" id="trcard">
 function create_default_slot_2(ctx) {
 	let div;
 
@@ -81,7 +97,7 @@ function create_default_slot_2(ctx) {
 	};
 }
 
-// (89:2) <Modal modal_title="Settings" id="settings">
+// (92:2) <Modal modal_title="Settings" id="settings">
 function create_default_slot_1(ctx) {
 	let div2;
 	let div0;
@@ -137,7 +153,7 @@ function create_default_slot_1(ctx) {
 	};
 }
 
-// (97:2) <Modal modal_title="About" id="about">
+// (100:2) <Modal modal_title="About" id="about">
 function create_default_slot(ctx) {
 	let div;
 
