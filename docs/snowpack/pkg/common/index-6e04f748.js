@@ -75,6 +75,9 @@ function get_all_dirty_from_scope($$scope) {
   }
   return -1;
 }
+function null_to_empty(value) {
+  return value == null ? "" : value;
+}
 function append(target, node) {
   target.appendChild(node);
 }
@@ -356,4 +359,4 @@ class SvelteComponent {
   }
 }
 
-export { src_url_equal as A, SvelteComponent as S, append_styles as a, space as b, attr as c, insert as d, element as e, append as f, set_data as g, detach as h, init as i, createEventDispatcher as j, create_component as k, listen as l, destroy_component as m, noop as n, onMount as o, globals as p, mount_component as q, run_all as r, safe_not_equal as s, text as t, transition_in as u, transition_out as v, create_slot as w, get_all_dirty_from_scope as x, get_slot_changes as y, update_slot_base as z };
+export { src_url_equal as A, null_to_empty as B, SvelteComponent as S, append_styles as a, space as b, attr as c, insert as d, element as e, append as f, set_data as g, detach as h, init as i, createEventDispatcher as j, create_component as k, listen as l, destroy_component as m, noop as n, onMount as o, globals as p, mount_component as q, run_all as r, safe_not_equal as s, text as t, transition_in as u, transition_out as v, create_slot as w, get_all_dirty_from_scope as x, get_slot_changes as y, update_slot_base as z };

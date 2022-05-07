@@ -9,6 +9,7 @@ import {
 	init,
 	insert,
 	noop,
+	null_to_empty,
 	safe_not_equal,
 	set_data,
 	space,
@@ -20,12 +21,12 @@ function create_fragment(ctx) {
 	let script;
 	let script_src_value;
 	let t0;
-	let div4;
+	let div7;
 	let div0;
 	let img0;
 	let img0_src_value;
 	let t1;
-	let div3;
+	let div4;
 	let div1;
 	let t2;
 	let t3;
@@ -33,51 +34,85 @@ function create_fragment(ctx) {
 	let img1_src_value;
 	let t4;
 	let div2;
+	let progress0;
+	let div2_class_value;
+	let t5;
+	let div3;
+	let progress1;
+	let div3_class_value;
+	let t6;
+	let div6;
+	let div5;
+	let div6_class_value;
 
 	return {
 		c() {
 			script = element("script");
 			t0 = space();
-			div4 = element("div");
+			div7 = element("div");
 			div0 = element("div");
 			img0 = element("img");
 			t1 = space();
-			div3 = element("div");
+			div4 = element("div");
 			div1 = element("div");
 			t2 = text(/*nick*/ ctx[0]);
 			t3 = space();
 			img1 = element("img");
 			t4 = space();
 			div2 = element("div");
-			div2.textContent = "HP ATK DEF SPATK SPDEF SPEED";
+			progress0 = element("progress");
+			t5 = space();
+			div3 = element("div");
+			progress1 = element("progress");
+			t6 = space();
+			div6 = element("div");
+			div5 = element("div");
+			div5.textContent = "HP ATK DEF SPATK SPDEF SPEED";
 			if (!src_url_equal(script.src, script_src_value = "https://twemoji.maxcdn.com/v/latest/twemoji.min.js")) attr(script, "src", script_src_value);
 			attr(script, "crossorigin", "anonymous");
 			if (!src_url_equal(img0.src, img0_src_value = /*avatar_link*/ ctx[1])) attr(img0, "src", img0_src_value);
 			attr(img0, "alt", "pokemonimg");
-			attr(img0, "class", "avatar svelte-hsyajj");
-			attr(div0, "class", "avatarwrapper svelte-hsyajj");
+			attr(img0, "class", "avatar svelte-fp3p9h");
+			attr(div0, "class", "avatarwrapper svelte-fp3p9h");
 			attr(img1, "alt", "");
 			if (!src_url_equal(img1.src, img1_src_value = /*gender_link*/ ctx[2])) attr(img1, "src", img1_src_value);
-			attr(img1, "class", "gender svelte-hsyajj");
-			attr(div1, "class", "name svelte-hsyajj");
-			attr(div2, "class", "stats svelte-hsyajj");
-			attr(div3, "class", "data svelte-hsyajj");
-			attr(div4, "class", "partyslot svelte-hsyajj");
+			attr(img1, "class", "gender svelte-fp3p9h");
+			attr(div1, "class", "name svelte-fp3p9h");
+			attr(progress0, "id", "hpbar");
+			progress0.value = "50";
+			attr(progress0, "max", "100");
+			attr(progress0, "class", "svelte-fp3p9h");
+			attr(div2, "class", div2_class_value = "" + (null_to_empty("hp " + /*empty_slot*/ ctx[3]) + " svelte-fp3p9h"));
+			attr(progress1, "id", "expbar");
+			progress1.value = "73";
+			attr(progress1, "max", "100");
+			attr(div3, "class", div3_class_value = "" + (null_to_empty("exp " + /*empty_slot*/ ctx[3]) + " svelte-fp3p9h"));
+			attr(div4, "class", "data svelte-fp3p9h");
+			attr(div5, "class", "stats svelte-fp3p9h");
+			attr(div6, "class", div6_class_value = "" + (null_to_empty("stat-wrapper " + /*empty_slot*/ ctx[3]) + " svelte-fp3p9h"));
+			attr(div7, "class", "partyslot svelte-fp3p9h");
 		},
 		m(target, anchor) {
 			append(document.head, script);
 			insert(target, t0, anchor);
-			insert(target, div4, anchor);
-			append(div4, div0);
+			insert(target, div7, anchor);
+			append(div7, div0);
 			append(div0, img0);
-			append(div4, t1);
-			append(div4, div3);
-			append(div3, div1);
+			append(div7, t1);
+			append(div7, div4);
+			append(div4, div1);
 			append(div1, t2);
 			append(div1, t3);
 			append(div1, img1);
-			append(div3, t4);
-			append(div3, div2);
+			append(div4, t4);
+			append(div4, div2);
+			append(div2, progress0);
+			append(div4, t5);
+			append(div4, div3);
+			append(div3, progress1);
+			append(div7, t6);
+			append(div7, div6);
+			append(div6, div5);
 		},
 		p(ctx, [dirty]) {
 			if (dirty & /*avatar_link*/ 2 && !src_url_equal(img0.src, img0_src_value = /*avatar_link*/ ctx[1])) {
@@ -89,23 +124,37 @@ function create_fragment(ctx) {
 			if (dirty & /*gender_link*/ 4 && !src_url_equal(img1.src, img1_src_value = /*gender_link*/ ctx[2])) {
 				attr(img1, "src", img1_src_value);
 			}
+
+			if (dirty & /*empty_slot*/ 8 && div2_class_value !== (div2_class_value = "" + (null_to_empty("hp " + /*empty_slot*/ ctx[3]) + " svelte-fp3p9h"))) {
+				attr(div2, "class", div2_class_value);
+			}
+
+			if (dirty & /*empty_slot*/ 8 && div3_class_value !== (div3_class_value = "" + (null_to_empty("exp " + /*empty_slot*/ ctx[3]) + " svelte-fp3p9h"))) {
+				attr(div3, "class", div3_class_value);
+			}
+
+			if (dirty & /*empty_slot*/ 8 && div6_class_value !== (div6_class_value = "" + (null_to_empty("stat-wrapper " + /*empty_slot*/ ctx[3]) + " svelte-fp3p9h"))) {
+				attr(div6, "class", div6_class_value);
+			}
 		},
 		i: noop,
 		o: noop,
 		d(detaching) {
 			detach(script);
 			if (detaching) detach(t0);
-			if (detaching) detach(div4);
+			if (detaching) detach(div7);
 		}
 	};
 }
 
 function instance($$self, $$props, $$invalidate) {
-	let { number = -1, nick = "", gender = 0, item = "" } = $$props;
+	let { number = -1, nick = "", gender = 0, item = 0 } = $$props;
 	let mondata;
 	let speciesdata;
 	let avatar_link;
 	let gender_link;
+	let empty_slot = "";
+	let form_checks = ["zacian", "giratina"];
 
 	const getMon = async () => {
 		const species = await fetch("https://pokeapi.co/api/v2/pokemon-species/" + number);
@@ -155,7 +204,18 @@ function instance($$self, $$props, $$invalidate) {
 				const jsonmon = await mon.json();
 				mondata = jsonmon;
 			}
-		} //Determine Pokemon Icon Based on Item (Specifically like Giratina Origin Form, and Zacian or Zamazenta-Crowned.  This doesn't count for primal reversion because that occurs during battle)
+
+			//Determine Pokemon Icon Based on Item (Specifically like Giratina Origin Form, and Zacian or Zamazenta-Crowned.  This doesn't count for primal reversion because that occurs during battle)
+			if (form_checks.includes(speciesdata.name)) {
+				if (speciesdata.id == 487) {
+					if (item == 442) {
+						const mon = await fetch(varieties[1].pokemon.url);
+						const jsonmon = await mon.json();
+						mondata = jsonmon;
+					}
+				}
+			}
+		}
 	};
 
 	if (number > 0) {
@@ -163,9 +223,13 @@ function instance($$self, $$props, $$invalidate) {
 			//Pokemon Icon
 			$$invalidate(1, avatar_link = mondata.sprites.front_default);
 
-			//Pokemon Name
+			//Pokemon Name (with some very patch solutions)
 			if (nick == "") {
 				$$invalidate(0, nick = speciesdata.name.charAt(0).toUpperCase() + speciesdata.name.slice(1));
+
+				if (speciesdata.id == 32 || speciesdata.id == 29) {
+					$$invalidate(0, nick = nick.substring(0, nick.length - 2));
+				}
 			}
 
 			//Pokemon Gender
@@ -184,6 +248,7 @@ function instance($$self, $$props, $$invalidate) {
 		});
 	} else {
 		nick = "<Empty Slot>";
+		empty_slot = "hidden";
 	}
 
 	if (avatar_link == null) {
@@ -191,19 +256,19 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	$$self.$$set = $$props => {
-		if ('number' in $$props) $$invalidate(3, number = $$props.number);
+		if ('number' in $$props) $$invalidate(4, number = $$props.number);
 		if ('nick' in $$props) $$invalidate(0, nick = $$props.nick);
-		if ('gender' in $$props) $$invalidate(4, gender = $$props.gender);
-		if ('item' in $$props) $$invalidate(5, item = $$props.item);
+		if ('gender' in $$props) $$invalidate(5, gender = $$props.gender);
+		if ('item' in $$props) $$invalidate(6, item = $$props.item);
 	};
 
-	return [nick, avatar_link, gender_link, number, gender, item];
+	return [nick, avatar_link, gender_link, empty_slot, number, gender, item];
 }
 
 class Pokemon extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { number: 3, nick: 0, gender: 4, item: 5 });
+		init(this, options, instance, create_fragment, safe_not_equal, { number: 4, nick: 0, gender: 5, item: 6 });
 	}
 }
 

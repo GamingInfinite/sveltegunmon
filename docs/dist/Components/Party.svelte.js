@@ -11,7 +11,6 @@ import {
 	init,
 	insert,
 	mount_component,
-	noop,
 	safe_not_equal,
 	space,
 	transition_in,
@@ -19,6 +18,7 @@ import {
 } from "../../snowpack/pkg/svelte/internal.js";
 
 import Pokemon from "./Pokemon.svelte.js";
+import { party } from "../stores.js";
 
 function create_fragment(ctx) {
 	let div;
@@ -34,12 +34,60 @@ function create_fragment(ctx) {
 	let t4;
 	let pokemon5;
 	let current;
-	pokemon0 = new Pokemon({ props: { number: 889, gender: 2 } });
-	pokemon1 = new Pokemon({ props: { number: 3, gender: 2 } });
-	pokemon2 = new Pokemon({ props: { number: 678, gender: 1 } });
-	pokemon3 = new Pokemon({});
-	pokemon4 = new Pokemon({});
-	pokemon5 = new Pokemon({});
+
+	pokemon0 = new Pokemon({
+			props: {
+				number: /*localparty*/ ctx[0][0].id,
+				gender: /*localparty*/ ctx[0][0].gender,
+				item: /*localparty*/ ctx[0][0].item,
+				nick: /*localparty*/ ctx[0][0].nick
+			}
+		});
+
+	pokemon1 = new Pokemon({
+			props: {
+				number: /*localparty*/ ctx[0][1].id,
+				gender: /*localparty*/ ctx[0][1].gender,
+				item: /*localparty*/ ctx[0][1].item,
+				nick: /*localparty*/ ctx[0][1].nick
+			}
+		});
+
+	pokemon2 = new Pokemon({
+			props: {
+				number: /*localparty*/ ctx[0][2].id,
+				gender: /*localparty*/ ctx[0][2].gender,
+				item: /*localparty*/ ctx[0][2].item,
+				nick: /*localparty*/ ctx[0][2].nick
+			}
+		});
+
+	pokemon3 = new Pokemon({
+			props: {
+				number: /*localparty*/ ctx[0][3].id,
+				gender: /*localparty*/ ctx[0][3].gender,
+				item: /*localparty*/ ctx[0][3].item,
+				nick: /*localparty*/ ctx[0][3].nick
+			}
+		});
+
+	pokemon4 = new Pokemon({
+			props: {
+				number: /*localparty*/ ctx[0][4].id,
+				gender: /*localparty*/ ctx[0][4].gender,
+				item: /*localparty*/ ctx[0][4].item,
+				nick: /*localparty*/ ctx[0][4].nick
+			}
+		});
+
+	pokemon5 = new Pokemon({
+			props: {
+				number: /*localparty*/ ctx[0][5].id,
+				gender: /*localparty*/ ctx[0][5].gender,
+				item: /*localparty*/ ctx[0][5].item,
+				nick: /*localparty*/ ctx[0][5].nick
+			}
+		});
 
 	return {
 		c() {
@@ -72,7 +120,44 @@ function create_fragment(ctx) {
 			mount_component(pokemon5, div, null);
 			current = true;
 		},
-		p: noop,
+		p(ctx, [dirty]) {
+			const pokemon0_changes = {};
+			if (dirty & /*localparty*/ 1) pokemon0_changes.number = /*localparty*/ ctx[0][0].id;
+			if (dirty & /*localparty*/ 1) pokemon0_changes.gender = /*localparty*/ ctx[0][0].gender;
+			if (dirty & /*localparty*/ 1) pokemon0_changes.item = /*localparty*/ ctx[0][0].item;
+			if (dirty & /*localparty*/ 1) pokemon0_changes.nick = /*localparty*/ ctx[0][0].nick;
+			pokemon0.$set(pokemon0_changes);
+			const pokemon1_changes = {};
+			if (dirty & /*localparty*/ 1) pokemon1_changes.number = /*localparty*/ ctx[0][1].id;
+			if (dirty & /*localparty*/ 1) pokemon1_changes.gender = /*localparty*/ ctx[0][1].gender;
+			if (dirty & /*localparty*/ 1) pokemon1_changes.item = /*localparty*/ ctx[0][1].item;
+			if (dirty & /*localparty*/ 1) pokemon1_changes.nick = /*localparty*/ ctx[0][1].nick;
+			pokemon1.$set(pokemon1_changes);
+			const pokemon2_changes = {};
+			if (dirty & /*localparty*/ 1) pokemon2_changes.number = /*localparty*/ ctx[0][2].id;
+			if (dirty & /*localparty*/ 1) pokemon2_changes.gender = /*localparty*/ ctx[0][2].gender;
+			if (dirty & /*localparty*/ 1) pokemon2_changes.item = /*localparty*/ ctx[0][2].item;
+			if (dirty & /*localparty*/ 1) pokemon2_changes.nick = /*localparty*/ ctx[0][2].nick;
+			pokemon2.$set(pokemon2_changes);
+			const pokemon3_changes = {};
+			if (dirty & /*localparty*/ 1) pokemon3_changes.number = /*localparty*/ ctx[0][3].id;
+			if (dirty & /*localparty*/ 1) pokemon3_changes.gender = /*localparty*/ ctx[0][3].gender;
+			if (dirty & /*localparty*/ 1) pokemon3_changes.item = /*localparty*/ ctx[0][3].item;
+			if (dirty & /*localparty*/ 1) pokemon3_changes.nick = /*localparty*/ ctx[0][3].nick;
+			pokemon3.$set(pokemon3_changes);
+			const pokemon4_changes = {};
+			if (dirty & /*localparty*/ 1) pokemon4_changes.number = /*localparty*/ ctx[0][4].id;
+			if (dirty & /*localparty*/ 1) pokemon4_changes.gender = /*localparty*/ ctx[0][4].gender;
+			if (dirty & /*localparty*/ 1) pokemon4_changes.item = /*localparty*/ ctx[0][4].item;
+			if (dirty & /*localparty*/ 1) pokemon4_changes.nick = /*localparty*/ ctx[0][4].nick;
+			pokemon4.$set(pokemon4_changes);
+			const pokemon5_changes = {};
+			if (dirty & /*localparty*/ 1) pokemon5_changes.number = /*localparty*/ ctx[0][5].id;
+			if (dirty & /*localparty*/ 1) pokemon5_changes.gender = /*localparty*/ ctx[0][5].gender;
+			if (dirty & /*localparty*/ 1) pokemon5_changes.item = /*localparty*/ ctx[0][5].item;
+			if (dirty & /*localparty*/ 1) pokemon5_changes.nick = /*localparty*/ ctx[0][5].nick;
+			pokemon5.$set(pokemon5_changes);
+		},
 		i(local) {
 			if (current) return;
 			transition_in(pokemon0.$$.fragment, local);
@@ -104,10 +189,32 @@ function create_fragment(ctx) {
 	};
 }
 
+function instance($$self, $$props, $$invalidate) {
+	let localparty;
+
+	party.subscribe(value => {
+		$$invalidate(0, localparty = value.party);
+	});
+
+	//Failsafe for if the Party Data is corrupted in some way
+	if (typeof localparty == "undefined") {
+		localparty = [
+			{ id: 0, gender: 0, item: 0, nick: "" },
+			{ id: 0, gender: 0, item: 0, nick: "" },
+			{ id: 0, gender: 0, item: 0, nick: "" },
+			{ id: 0, gender: 0, item: 0, nick: "" },
+			{ id: 0, gender: 0, item: 0, nick: "" },
+			{ id: 0, gender: 0, item: 0, nick: "" }
+		];
+	}
+
+	return [localparty];
+}
+
 class Party extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, null, create_fragment, safe_not_equal, {});
+		init(this, options, instance, create_fragment, safe_not_equal, {});
 	}
 }
 
