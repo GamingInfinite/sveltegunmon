@@ -2,12 +2,16 @@
   export let number = -1,
     nick = "",
     gender = 0,
-    item = "";
+    item = 0;
 
   let mondata;
   let speciesdata;
   let avatar_link;
   let gender_link;
+
+  let empty_slot = "";
+
+  let form_checks = ["zacian", "giratina"];
 
   const getMon = async () => {
     const species = await fetch(
@@ -64,7 +68,15 @@
       }
 
       //Determine Pokemon Icon Based on Item (Specifically like Giratina Origin Form, and Zacian or Zamazenta-Crowned.  This doesn't count for primal reversion because that occurs during battle)
-      
+      if (form_checks.includes(speciesdata.name)) {
+        if (speciesdata.id == 487) {
+          if (item == 442) {
+            const mon = await fetch(varieties[1].pokemon.url);
+            const jsonmon = await mon.json();
+            mondata = jsonmon;
+          }
+        }
+      }
     }
   };
 
@@ -73,10 +85,13 @@
       //Pokemon Icon
       avatar_link = mondata.sprites.front_default;
 
-      //Pokemon Name
+      //Pokemon Name (with some very patch solutions)
       if (nick == "") {
         nick =
           speciesdata.name.charAt(0).toUpperCase() + speciesdata.name.slice(1);
+        if (speciesdata.id == 32 || speciesdata.id == 29) {
+          nick = nick.substring(0, nick.length - 2);
+        }
       }
 
       //Pokemon Gender
@@ -95,6 +110,7 @@
     });
   } else {
     nick = "<Empty Slot>";
+    empty_slot = "hidden";
   }
 
   if (avatar_link == null) {
@@ -117,6 +133,14 @@
       {nick}
       <img alt="" src={gender_link} class="gender" />
     </div>
+    <div class={"hp " + empty_slot}>
+      <progress id="hpbar" value="50" max="100" />
+    </div>
+    <div class={"exp " + empty_slot}>
+      <progress id="expbar" value="73" max="100" />
+    </div>
+  </div>
+  <div class={"stat-wrapper " + empty_slot}>
     <div class="stats">HP ATK DEF SPATK SPDEF SPEED</div>
   </div>
 </div>
@@ -135,6 +159,10 @@
     margin-bottom: 0.5rem;
   }
 
+  .hidden {
+    display: none;
+  }
+
   .avatarwrapper {
     flex-direction: column;
     margin-left: 1rem;
@@ -149,6 +177,11 @@
 
   .data {
     flex-direction: column;
+    margin-right: 1rem;
+  }
+
+  .stat-wrapper {
+    flex-direction: column;
   }
 
   .name {
@@ -161,5 +194,9 @@
 
   .gender {
     height: 1em;
+  }
+
+  #hpbar {
+    background: green;
   }
 </style>
